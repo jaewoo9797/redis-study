@@ -1,0 +1,15 @@
+services:
+  redis-master:
+    build: .
+    container_name: study-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    restart: always
+
+  # (선택) 레디스 데이터를 시각적으로 볼 수 있는 도구 추가
+  redis-insight:
+    image: redis/redisinsight:latest
+    ports:
+      - "5540:5540"
